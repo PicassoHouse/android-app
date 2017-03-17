@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Picasso House</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="sair">Sair</string>
+    <string name="usuarios">Usuários</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="historico_de_acessos">Histórico de Acessos</string>
+    <string name="relat_rios_de_consumo">Relatórios de Consumo</string>
+    <string name="luzes">Luzes</string>
+    <string name="trancar_casa">Trancar casa</string>
+    <string name="usur_ios">Usuráios</string>
+    <string name="consumo">Consumo</string>
+    <string name="janelas">Janelas</string>
+    <string name="garage">Garagem</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="entrar">Entrar</string>
+    <string name="picasso_house">Picasso House</string>
+</resources>

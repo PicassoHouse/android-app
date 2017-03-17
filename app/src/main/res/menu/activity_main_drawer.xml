@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:title="@string/dashboard" />
+        <item
+            android:id="@+id/nav_luzes"
+            android:icon="@drawable/ic_wb_incandescent_black_24dp"
+            android:title="@string/luzes" />
+        <item
+            android:id="@+id/nav_access_history"
+            android:icon="@drawable/ic_assessment_black_24dp"
+            android:title="@string/historico_de_acessos" />
+        <item
+            android:id="@+id/nav_spent_history"
+            android:icon="@drawable/ic_show_chart_black_24dp"
+            android:title="@string/relat_rios_de_consumo" />
+
+    </group>
+
+    <item android:title="@string/configuracoes">
+        <menu>
+            <!--<item-->
+                <!--android:id="@+id/nav_users"-->
+                <!--android:icon="@drawable/ic_group_black_24dp"-->
+                <!--android:title="@string/usuarios" />-->
+            <item
+                android:id="@+id/nav_users"
+                android:icon="@drawable/ic_group_black_24dp"
+                android:title="@string/usuarios" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/sair" />
+        </menu>
+    </item>
+
+</menu>
