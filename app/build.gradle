@@ -13,10 +13,30 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+    signingConfigs {
+        release {
+            storeFile file('keystore/release.keystore')
+            keyAlias 'picassohouse'
+            storePassword "$System.env.PICASSOHOUSE_APP_KEY"
+            keyPassword "$System.env.PICASSOHOUSE_APP_KEY"
+        }
+        debug {
+            storeFile file('keystore/debug.keystore')
+            keyAlias 'androiddebugkey'
+            storePassword 'android'
+            keyPassword 'android'
+        }
+    }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix " Debug"
+            debuggable true
         }
     }
     packagingOptions {
