@@ -9,6 +9,7 @@ import android.view.View
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.ui.features.MainActivity
 import butterknife.ButterKnife
+import butterknife.OnClick
 
 
 class DashboardFragment:  Fragment() {
@@ -45,4 +46,8 @@ class DashboardFragment:  Fragment() {
         return view
     }
 
+    @OnClick(R.id.bt_lights)
+    fun onClickOptions(view: View) {
+        parentActivity?.navigationController?.presentFragment(LightsFragment.newInstance())
+    }
 }

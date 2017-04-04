@@ -15,6 +15,7 @@ class NavigationController (
         this.clearStack()
 
         val transaction = activity.supportFragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         transaction.replace(R.id.content, fragment)
         transaction.commit()
     }

@@ -13,6 +13,7 @@ import br.com.picasso.picassohouse.R
 import android.content.Intent
 import butterknife.ButterKnife
 import br.com.picasso.picassohouse.ui.features.dashboard.DashboardFragment
+import br.com.picasso.picassohouse.ui.features.dashboard.LightsFragment
 import br.com.picasso.picassohouse.ui.features.login.LoginActivity
 import br.com.picasso.picassohouse.utils.setupStatusBarLollilop
 import butterknife.BindView
@@ -32,7 +33,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     // --------------------------------------------------------
     // Properties
     // --------------------------------------------------------
-    lateinit private var navigationController : NavigationController
+    lateinit var navigationController : NavigationController
 
     val rootLayout: View?
         get() = drawerLayout
@@ -90,7 +91,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_dashboard -> navigationController.presentFragment(DashboardFragment.newInstance())
-            R.id.nav_luzes -> navigationController.presentFragment(DashboardFragment.newInstance())
+            R.id.nav_luzes -> navigationController.presentFragment(LightsFragment.newInstance())
             R.id.nav_logout -> logout()
             else -> {
             }

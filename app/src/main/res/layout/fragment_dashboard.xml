@@ -25,6 +25,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/bt_lights"
             style="@style/DashboardCardStyle"
             card_view:cardCornerRadius="4dp">
 

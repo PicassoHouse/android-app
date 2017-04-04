@@ -6,4 +6,6 @@
 
     <color name="background_nav_header">#D84315</color>
     <color name="background_nav">#FF5722</color>
+
+    <color name="dark_gray">#555555</color>
 </resources>
