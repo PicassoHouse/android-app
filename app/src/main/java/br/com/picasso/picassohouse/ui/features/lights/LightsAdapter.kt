@@ -38,6 +38,7 @@ open class LightsAdapter(context : Context) : BaseAdapter() {
         holder.ivIcon.setImageResource(room.type.iconRes())
         holder.status.isChecked = room.isLightOn
         holder.status.setOnCheckedChangeListener { _, isChecked ->  onSwitchChangeListener?.onSwitchChangeListener(position, isChecked)}
+        holder.rootView.setOnClickListener { holder.status.isChecked = !holder.status.isChecked }
 
         return view!!
     }
@@ -57,6 +58,7 @@ open class LightsAdapter(context : Context) : BaseAdapter() {
 
     internal class ItemViewHolder(view: View) {
 
+        @BindView(R.id.rootView) lateinit var rootView: View
         @BindView(R.id.tv_title) lateinit var tvTitle: TextView
         @BindView(R.id.iv_icon) lateinit var ivIcon: ImageView
         @BindView(R.id.sw_status) lateinit var status: Switch
