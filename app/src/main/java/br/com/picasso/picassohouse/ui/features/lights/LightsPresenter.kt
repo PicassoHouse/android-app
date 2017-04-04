@@ -1,24 +1,19 @@
 package br.com.picasso.picassohouse.ui.features.lights
 
 import br.com.picasso.picassohouse.models.Room
-import br.com.picasso.picassohouse.models.RoomType
-import java.util.*
+import br.com.picasso.picassohouse.networking.PicassoHouseAPI
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
-class LightsPresenter : LightsContract.Presenter {
+class LightsPresenter(val apiService : PicassoHouseAPI?) : LightsContract.Presenter {
 
     var view : LightsContract.View? = null
 
     lateinit var rooms : List<Room>
 
     override fun start() {
-        //TODO: load rooms from API
-        rooms = Arrays.asList(Room("123", "Quarto", RoomType.bedRoom, true),
-                Room("123", "Cozinha", RoomType.kitchen, false),
-                Room("123", "Sala de Estar", RoomType.livingRoom, false),
-                Room("123", "Garagem", RoomType.garage, true))
-
-        view?.showRooms(rooms)
+        loadRooms()
     }
 
     override fun attachView(view: LightsContract.View) {
@@ -27,6 +22,15 @@ class LightsPresenter : LightsContract.Presenter {
 
     override fun detachView() {
         this.view = null
+    }
+
+    private fun loadRooms() {
+        apiService!!.getRooms()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { rooms ->
+                    view?.showRooms(rooms)
+                }
     }
 
     // --------------------------------------------------------

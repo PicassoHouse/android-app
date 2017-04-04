@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ListView
+import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.models.Room
 import br.com.picasso.picassohouse.ui.features.MainActivity
@@ -50,7 +51,8 @@ class LightsFragment:  Fragment() , LightsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter = LightsPresenter()
+        val apiService = (activity.applicationContext as PHApplication).phService
+        presenter = LightsPresenter(apiService)
         presenter.attachView(this)
     }
 
