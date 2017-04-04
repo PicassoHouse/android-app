@@ -9,12 +9,15 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
+import retrofit2.http.*
 
 interface PicassoHouseAPI {
 
     @GET("rooms")
     fun getRooms(): Observable<List<Room>>
+
+    @PUT("rooms")
+    fun updateRoom(@Body room: Room): Observable<Void>
 
 
     // --------------------------------------------------------

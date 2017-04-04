@@ -25,6 +25,8 @@ class LightsPresenter(val apiService : PicassoHouseAPI?) : LightsContract.Presen
     }
 
     private fun loadRooms() {
+        //TODO: save rooms locally
+        
         apiService!!.getRooms()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -38,8 +40,13 @@ class LightsPresenter(val apiService : PicassoHouseAPI?) : LightsContract.Presen
     // --------------------------------------------------------
 
     override fun lightDidChangeStatus(position: Int, toStatus: Boolean) {
-        //TODO: call API and update light status
-        print("" + position + toStatus)
+        val r = rooms[position]
+        val room = Room(r.id, r.title, r.type, toStatus)
+
+        apiService!!.updateRoom(room)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
     }
 
 }
