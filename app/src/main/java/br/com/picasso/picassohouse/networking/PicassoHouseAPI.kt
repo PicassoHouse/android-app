@@ -4,12 +4,12 @@ import android.content.Context
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.models.Room
 import com.google.gson.GsonBuilder
-import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import rx.Observable
 
 interface PicassoHouseAPI {
 
@@ -44,14 +44,13 @@ interface PicassoHouseAPI {
                     }.build()
 
             //service
-            val retrofit = Retrofit.Builder()
+            return Retrofit.Builder()
+                    .client(client)
                     .baseUrl(context.getString(R.string.API_URL))
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .client(client)
                     .build()
-
-            return retrofit.create(PicassoHouseAPI::class.java)
+                    .create(PicassoHouseAPI::class.java)
         }
     }
 

@@ -8,12 +8,13 @@ import com.squareup.leakcanary.LeakCanary
 
 class PHApplication : Application() {
 
-    var phService: PicassoHouseAPI? = null
+    private var _phService: PicassoHouseAPI? = null
+    val phService: PicassoHouseAPI
         get() {
-            if(phService == null)
-                phService = PicassoHouseAPI.create(this)
+            if(_phService == null)
+                _phService = PicassoHouseAPI.create(this)
 
-            return phService
+            return _phService!!
         }
 
     override fun onCreate() {

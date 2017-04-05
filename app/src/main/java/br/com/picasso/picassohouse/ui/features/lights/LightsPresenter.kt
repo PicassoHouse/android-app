@@ -2,11 +2,11 @@ package br.com.picasso.picassohouse.ui.features.lights
 
 import br.com.picasso.picassohouse.models.Room
 import br.com.picasso.picassohouse.networking.PicassoHouseAPI
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 
-class LightsPresenter(val apiService : PicassoHouseAPI?) : LightsContract.Presenter {
+class LightsPresenter(val apiService : PicassoHouseAPI) : LightsContract.Presenter {
 
     var view : LightsContract.View? = null
 
@@ -26,13 +26,11 @@ class LightsPresenter(val apiService : PicassoHouseAPI?) : LightsContract.Presen
 
     private fun loadRooms() {
         //TODO: save rooms locally
-        
-        apiService!!.getRooms()
+
+        apiService.getRooms()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { rooms ->
-                    view?.showRooms(rooms)
-                }
+                .subscribe { rooms -> view?.showRooms(rooms) }
     }
 
     // --------------------------------------------------------
@@ -43,10 +41,10 @@ class LightsPresenter(val apiService : PicassoHouseAPI?) : LightsContract.Presen
         val r = rooms[position]
         val room = Room(r.id, r.title, r.type, toStatus)
 
-        apiService!!.updateRoom(room)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
+//        apiService.updateRoom(room)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe()
     }
 
 }
