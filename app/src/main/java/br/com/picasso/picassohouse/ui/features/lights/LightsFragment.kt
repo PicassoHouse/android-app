@@ -1,4 +1,4 @@
-package br.com.picasso.picassohouse.ui.features.dashboard
+package br.com.picasso.picassohouse.ui.features.lights
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,9 +10,6 @@ import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.models.Room
 import br.com.picasso.picassohouse.ui.features.MainActivity
-import br.com.picasso.picassohouse.ui.features.lights.LightsAdapter
-import br.com.picasso.picassohouse.ui.features.lights.LightsContract
-import br.com.picasso.picassohouse.ui.features.lights.LightsPresenter
 import butterknife.BindView
 import butterknife.ButterKnife
 

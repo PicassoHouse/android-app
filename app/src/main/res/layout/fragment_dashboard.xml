@@ -72,7 +72,7 @@
             style="@style/DashboardCardStyle"
             card_view:cardCornerRadius="4dp">
 
-            <LinearLayout style="@style/DashboardCardLinearLayoutStyle">
+            <LinearLayout android:id="@+id/bt_lights_info" style="@style/DashboardCardLinearLayoutStyle">
                 <ImageView style="@style/DashboardCardImageViewStyle" app:srcCompat="@drawable/ic_show_chart_black_24dp"/>
                 <TextView style="@style/DashboardCardTextViewStyle" android:text="@string/consumo"/>
             </LinearLayout>

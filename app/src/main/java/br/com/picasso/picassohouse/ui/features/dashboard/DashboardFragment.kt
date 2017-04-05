@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.ui.features.MainActivity
+import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
+import br.com.picasso.picassohouse.ui.features.lights_info.LightsInfoFragment
 import butterknife.ButterKnife
 import butterknife.OnClick
 
@@ -45,8 +47,11 @@ class DashboardFragment:  Fragment() {
         return view
     }
 
-    @OnClick(R.id.bt_lights)
+    @OnClick(R.id.bt_lights, R.id.bt_lights_info)
     fun onClickOptions(view: View) {
-        parentActivity?.navigationController?.presentFragment(LightsFragment.newInstance())
+        when (view.id) {
+            R.id.bt_lights -> parentActivity?.navigationController?.presentFragment(LightsFragment.newInstance())
+            R.id.bt_lights_info -> parentActivity?.navigationController?.presentFragment(LightsInfoFragment.newInstance())
+        }
     }
 }

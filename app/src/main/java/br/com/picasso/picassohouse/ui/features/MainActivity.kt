@@ -13,7 +13,8 @@ import br.com.picasso.picassohouse.R
 import android.content.Intent
 import butterknife.ButterKnife
 import br.com.picasso.picassohouse.ui.features.dashboard.DashboardFragment
-import br.com.picasso.picassohouse.ui.features.dashboard.LightsFragment
+import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
+import br.com.picasso.picassohouse.ui.features.lights_info.LightsInfoFragment
 import br.com.picasso.picassohouse.ui.features.login.LoginActivity
 import br.com.picasso.picassohouse.utils.setupStatusBarLollilop
 import butterknife.BindView
@@ -92,6 +93,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         when (item.itemId) {
             R.id.nav_dashboard -> navigationController.presentFragment(DashboardFragment.newInstance())
             R.id.nav_luzes -> navigationController.presentFragment(LightsFragment.newInstance())
+            R.id.nav_spent_history -> navigationController.presentFragment(LightsInfoFragment.newInstance())
             R.id.nav_logout -> logout()
             else -> {
             }

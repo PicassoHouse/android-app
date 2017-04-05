@@ -34,4 +34,6 @@
     <string name="entrar">Entrar</string>
     <string name="picasso_house">Picasso House</string>
     <string name="API_URL">http://localhost:3000/</string>
+    <string name="lights">Luzes</string>
+    <string name="lights_info">Histórico de Consumo</string>
 </resources>
