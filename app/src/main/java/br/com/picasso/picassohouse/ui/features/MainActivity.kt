@@ -68,6 +68,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     override fun onBackPressed() {
+        setActionBarTitle(R.string.app_name)
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)

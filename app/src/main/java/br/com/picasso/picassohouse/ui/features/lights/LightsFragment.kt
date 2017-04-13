@@ -56,6 +56,7 @@ class LightsFragment:  Fragment() , LightsContract.View {
     override fun onResume() {
         super.onResume()
         presenter.start()
+        parentActivity?.setActionBarTitle(R.string.lights)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

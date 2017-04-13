@@ -50,8 +50,8 @@ class DashboardFragment:  Fragment() {
     @OnClick(R.id.bt_lights, R.id.bt_lights_info)
     fun onClickOptions(view: View) {
         when (view.id) {
-            R.id.bt_lights -> parentActivity?.navigationController?.presentFragment(LightsFragment.newInstance())
-            R.id.bt_lights_info -> parentActivity?.navigationController?.presentFragment(LightsInfoFragment.newInstance())
+            R.id.bt_lights -> parentActivity?.navigationController?.pushFragment(LightsFragment.newInstance())
+            R.id.bt_lights_info -> parentActivity?.navigationController?.pushFragment(LightsInfoFragment.newInstance())
         }
     }
 }
