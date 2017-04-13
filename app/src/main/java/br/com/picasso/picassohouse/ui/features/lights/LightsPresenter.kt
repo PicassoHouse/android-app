@@ -1,6 +1,7 @@
 package br.com.picasso.picassohouse.ui.features.lights
 
 import br.com.picasso.picassohouse.models.Room
+import br.com.picasso.picassohouse.models.RoomType
 import br.com.picasso.picassohouse.networking.PicassoHouseAPI
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -27,10 +28,18 @@ class LightsPresenter(val apiService : PicassoHouseAPI) : LightsContract.Present
     private fun loadRooms() {
         //TODO: save rooms locally
 
-        apiService.getRooms()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { rooms -> view?.showRooms(rooms) }
+        rooms = mutableListOf(
+                Room("3", "Sala de Estar", RoomType.livingRoom, false),
+                Room("1", "Quarto", RoomType.bedRoom, true),
+                Room("2", "Quarto 2", RoomType.bedRoom, false),
+                Room("4", "Cozinha", RoomType.kitchen, true),
+                Room("5", "Garagem", RoomType.garage, false))
+        view?.showRooms(rooms)
+
+//        apiService.getRooms()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe { rooms -> view?.showRooms(rooms) }
     }
 
     // --------------------------------------------------------
