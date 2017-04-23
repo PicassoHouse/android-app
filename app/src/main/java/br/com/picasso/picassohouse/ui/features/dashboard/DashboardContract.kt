@@ -13,6 +13,7 @@ interface DashboardContract {
 
     interface Presenter : BasePresenter<View> {
         fun setHomeIsLocked(isLocked: Boolean)
+        fun setGarageClosed(isClosed: Boolean)
     }
 
 }

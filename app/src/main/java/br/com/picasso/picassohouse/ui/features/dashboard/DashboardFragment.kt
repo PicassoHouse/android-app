@@ -100,6 +100,15 @@ class DashboardFragment:  Fragment(), DashboardContract.View  {
                 .show()
     }
 
+    @OnClick(R.id.bt_open_garage)
+    fun onClickOpenGarage(view: View) {
+        presenter.setGarageClosed(false)
+    }
+
+    @OnClick(R.id.bt_close_garage)
+    fun onClickCloseGarage(view: View) {
+        presenter.setGarageClosed(true)
+    }
 
     // --------------------------------------------------------
     //  DashboardContract.View methods

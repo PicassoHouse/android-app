@@ -51,4 +51,12 @@ class DashboardPresenter(val apiService : PicassoHouseAPI) : DashboardContract.P
         }
     }
 
+    override fun  setGarageClosed(isClosed: Boolean) {
+        //TODO: call API and send isClosed
+//        apiService.setGarageOpened(!isClosed)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe()
+    }
+
 }
