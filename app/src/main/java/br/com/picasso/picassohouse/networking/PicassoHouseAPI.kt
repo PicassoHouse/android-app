@@ -13,11 +13,9 @@ import rx.Observable
 
 interface PicassoHouseAPI {
 
-    @GET("rooms")
-    fun getRooms(): Observable<List<Room>>
-
-    @PUT("rooms")
-    fun updateRoom(@Body room: Room): Observable<Void>
+    @GET("rooms") fun getRooms(): Observable<List<Room>>
+    @PUT("rooms") fun updateRoom(@Body room: Room): Observable<Void>
+    @POST("home/lock") fun setHomeLocked(@Field("lock") isLocked: Boolean): Observable<Void>
 
 
     // --------------------------------------------------------

@@ -36,4 +36,10 @@
     <string name="API_URL">http://localhost:3000/</string>
     <string name="lights">Luzes</string>
     <string name="lights_info">Histórico de Consumo</string>
+    <string name="confirm_unlock_house">Deseja destrancar sua casa?</string>
+    <string name="atention">Atenção</string>
+    <string name="unlock">Destrancar</string>
+    <string name="destrancar_casa">Destrancar casa</string>
+    <string name="confirm_lock_house">Deseja trancar sua casa?</string>
+    <string name="lock">Trancar</string>
 </resources>
