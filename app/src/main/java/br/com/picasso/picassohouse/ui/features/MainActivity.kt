@@ -16,6 +16,7 @@ import br.com.picasso.picassohouse.ui.features.dashboard.DashboardFragment
 import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
 import br.com.picasso.picassohouse.ui.features.lights_info.LightsInfoFragment
 import br.com.picasso.picassohouse.ui.features.login.LoginActivity
+import br.com.picasso.picassohouse.utils.AuthHelper
 import br.com.picasso.picassohouse.utils.setupStatusBarLollilop
 import butterknife.BindView
 
@@ -106,7 +107,8 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
 
     private fun logout() {
-        //TODO: remover usuario da sessao
+        AuthHelper.setAccessToken(this, "")
+
         navigationController.clearStack()
 
         startActivity(Intent(this, LoginActivity::class.java))

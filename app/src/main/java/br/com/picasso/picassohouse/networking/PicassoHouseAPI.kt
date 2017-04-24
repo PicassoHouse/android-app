@@ -3,6 +3,7 @@ package br.com.picasso.picassohouse.networking
 import android.content.Context
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.models.Room
+import br.com.picasso.picassohouse.utils.AuthHelper
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -12,6 +13,10 @@ import retrofit2.http.*
 import rx.Observable
 
 interface PicassoHouseAPI {
+
+    @FormUrlEncoded
+    @POST("auth")
+    fun login(@Field("username") username: String, @Field("password") password: String): Observable<String>
 
     @GET("rooms") fun getRooms(): Observable<List<Room>>
     @PUT("rooms") fun updateRoom(@Body room: Room): Observable<Void>
@@ -36,7 +41,7 @@ interface PicassoHouseAPI {
                         val url = newRequest
                                 .url()
                                 .newBuilder()
-                                .addQueryParameter("access_token", "Bearer asdf123") //TODO: access_token
+                                .addQueryParameter("access_token", AuthHelper.getAccessToken(context))
                                 .build()
                         newRequest = newRequest.newBuilder().url(url).build()
                         chain.proceed(newRequest)

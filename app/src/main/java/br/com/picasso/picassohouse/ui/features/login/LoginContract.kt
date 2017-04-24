@@ -12,7 +12,7 @@ interface LoginContract {
     }
 
     interface Presenter : BasePresenter<View> {
-        fun authenticate(terminal: String, password: String)
+        fun authenticate(username: String, password: String)
     }
 
 }

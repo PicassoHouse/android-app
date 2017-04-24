@@ -10,6 +10,7 @@ import android.widget.EditText
 import br.com.picasso.picassohouse.R
 
 import android.content.Intent
+import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.ui.features.MainActivity
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -35,7 +36,8 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
         setContentView(R.layout.activity_login)
         ButterKnife.bind(this)
 
-        presenter = LoginPresenter(this)
+        val apiService = (applicationContext as PHApplication).phService
+        presenter = LoginPresenter(this, apiService)
         presenter.attachView(this)
         presenter.start()
     }
