@@ -4,7 +4,6 @@ import android.content.Context
 import br.com.picasso.picassohouse.networking.PicassoHouseAPI
 import br.com.picasso.picassohouse.utils.AuthHelper
 import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Action1
 import rx.schedulers.Schedulers
 
 

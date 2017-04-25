@@ -6,7 +6,6 @@ enum class RoomType {
     bedRoom, livingRoom, kitchen, garage, bath;
 
     fun iconRes() : Int {
-        //TODO: change icons
         when (this) {
             bedRoom -> return R.drawable.ic_bed
             kitchen -> return R.drawable.ic_kitchen

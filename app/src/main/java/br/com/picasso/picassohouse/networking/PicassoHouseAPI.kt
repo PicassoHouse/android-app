@@ -2,7 +2,9 @@ package br.com.picasso.picassohouse.networking
 
 import android.content.Context
 import br.com.picasso.picassohouse.R
+import br.com.picasso.picassohouse.models.House
 import br.com.picasso.picassohouse.models.Room
+import br.com.picasso.picassohouse.models.User
 import br.com.picasso.picassohouse.utils.AuthHelper
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -18,10 +20,14 @@ interface PicassoHouseAPI {
     @POST("auth")
     fun login(@Field("username") username: String, @Field("password") password: String): Observable<String>
 
+
+    @GET("users/current") fun getUserLogged(): Observable<User>
+
     @GET("rooms") fun getRooms(): Observable<List<Room>>
     @PUT("rooms") fun updateRoom(@Body room: Room): Observable<Void>
-    @POST("home/lock") fun setHomeLocked(@Field("lock") isLocked: Boolean): Observable<Void>
-    @POST("home/garage") fun setGarageOpened(@Field("open") isOpened: Boolean): Observable<Void>
+    @GET("house") fun getHouseInfo(): Observable<House>
+    @POST("house/lock") fun setHomeLocked(@Query("lock") isLocked: Boolean): Observable<Void>
+    @POST("house/garage") fun setGarageOpened(@Query("open") isOpened: Boolean): Observable<Void>
 
 
     // --------------------------------------------------------

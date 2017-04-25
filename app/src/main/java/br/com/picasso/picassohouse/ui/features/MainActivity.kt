@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import br.com.picasso.picassohouse.R
 import android.content.Intent
+import android.widget.TextView
+import br.com.picasso.picassohouse.PHApplication
+import br.com.picasso.picassohouse.models.User
 import butterknife.ButterKnife
 import br.com.picasso.picassohouse.ui.features.dashboard.DashboardFragment
 import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
@@ -19,6 +22,8 @@ import br.com.picasso.picassohouse.ui.features.login.LoginActivity
 import br.com.picasso.picassohouse.utils.AuthHelper
 import br.com.picasso.picassohouse.utils.setupStatusBarLollilop
 import butterknife.BindView
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 
 open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +35,8 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     @BindView(R.id.drawer_layout) lateinit var drawerLayout: DrawerLayout
     @BindView(R.id.nav_view) lateinit var navigationView: NavigationView
 
+
+
     lateinit var toggle: ActionBarDrawerToggle
 
     // --------------------------------------------------------
@@ -39,6 +46,9 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
     val rootLayout: View?
         get() = drawerLayout
+
+
+    lateinit var currentUser : User
 
     // --------------------------------------------------------
     // Lifecycler
@@ -65,6 +75,22 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         navigationController.presentFragment(DashboardFragment.newInstance())
 
         navigationView.setNavigationItemSelectedListener(this)
+
+        loadUser()
+    }
+
+    private fun loadUser() {
+        val apiService = (applicationContext as PHApplication).phService
+
+        apiService.getUserLogged()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ it ->
+                    currentUser = it
+                    val headerView = navigationView.getHeaderView(0)
+                    (headerView.findViewById(R.id.tv_display_name) as TextView).text = it.displayName
+                    (headerView.findViewById(R.id.tv_username) as TextView).text = it.username
+                }, ::print)
     }
 
 

@@ -1,7 +1,5 @@
 package br.com.picasso.picassohouse.ui.features.lights
 
-import br.com.picasso.picassohouse.models.Room
-import br.com.picasso.picassohouse.models.RoomType
 import br.com.picasso.picassohouse.networking.PicassoHouseAPI
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -14,8 +12,17 @@ class DashboardPresenter(val apiService : PicassoHouseAPI) : DashboardContract.P
     private var isHomeLocked : Boolean = false
 
     override fun start() {
-        //TODO: call API and get house status
-        view?.showButtonLockHouse()
+        apiService.getHouseInfo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ house ->
+                    isHomeLocked = house.isLocked
+                    if(isHomeLocked)
+                        view?.showButtonUnlockHouse()
+                    else
+                        view?.showButtonLockHouse()
+                }, ::print)
+
     }
 
     override fun attachView(view: DashboardContract.View) {
@@ -33,30 +40,23 @@ class DashboardPresenter(val apiService : PicassoHouseAPI) : DashboardContract.P
     override fun setHomeIsLocked(isLocked: Boolean) {
         isHomeLocked = isLocked
 
-//        apiService.setHomeLocked(isLocked)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe {
-//                    if(isLocked){
-//                        view?.showButtonUnlockHouse()
-//                    } else {
-//                        view?.showButtonLockHouse()
-//                    }
-//                }
-        //TODO: remove this lines of code, just mocks
-        if(isLocked){
-            view?.showButtonUnlockHouse()
-        } else {
-            view?.showButtonLockHouse()
-        }
+        apiService.setHomeLocked(isLocked)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    if(isLocked){
+                        view?.showButtonUnlockHouse()
+                    } else {
+                        view?.showButtonLockHouse()
+                    }
+                }, ::print)
     }
 
     override fun  setGarageClosed(isClosed: Boolean) {
-        //TODO: call API and send isClosed
-//        apiService.setGarageOpened(!isClosed)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe()
+        apiService.setGarageOpened(!isClosed)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
     }
 
 }
