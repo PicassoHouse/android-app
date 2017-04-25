@@ -25,7 +25,7 @@ interface PicassoHouseAPI {
     @PUT("rooms") fun updateRoom(@Body room: Room): Observable<Void>
     @GET("house") fun getHouseInfo(): Observable<House>
     @POST("house/lock") fun setHomeLocked(@Query("lock") isLocked: Boolean): Observable<Void>
-    @POST("house/garage") fun setGarageOpened(@Query("open") isOpened: Boolean): Observable<Void>
+    @POST("house/openGarage") fun setGarageOpened(@Query("open") isOpened: Boolean): Observable<Void>
 
     @GET("reports/currentmonthlightinfo") fun getCurrentMonthLightInfo(): Observable<CurrentMonthLightInfo>
     @GET("reports/monthlighthistory") fun getLightHistory(): Observable<List<LightHistoryItem>>
