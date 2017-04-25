@@ -9,6 +9,7 @@ import butterknife.ButterKnife
 import butterknife.BindView
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.models.Room
+import br.com.picasso.picassohouse.models.RoomType
 
 
 open class LightsAdapter(context : Context) : BaseAdapter() {
