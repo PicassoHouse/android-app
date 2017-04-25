@@ -10,10 +10,10 @@ import android.view.View
 import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.ui.features.MainActivity
-import br.com.picasso.picassohouse.ui.features.lights.DashboardContract
-import br.com.picasso.picassohouse.ui.features.lights.DashboardPresenter
 import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
 import br.com.picasso.picassohouse.ui.features.lights_info.LightsInfoFragment
+import br.com.picasso.picassohouse.ui.features.users.detail.UserDetailFragment
+import br.com.picasso.picassohouse.ui.features.users.list.UsersFragment
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -72,13 +72,14 @@ class DashboardFragment:  Fragment(), DashboardContract.View  {
         //TODO: all configs should be impremented here
     }
 
-    @OnClick(R.id.bt_lock_house, R.id.bt_unlock_house, R.id.bt_lights, R.id.bt_lights_info)
+    @OnClick(R.id.bt_lock_house, R.id.bt_unlock_house, R.id.bt_lights, R.id.bt_lights_info, R.id.bt_users)
     fun onClickOptions(view: View) {
         when (view.id) {
             R.id.bt_lock_house -> onClickLockButton()
             R.id.bt_unlock_house -> onClickUnlockButton()
             R.id.bt_lights -> parentActivity?.navigationController?.pushFragment(LightsFragment.newInstance())
             R.id.bt_lights_info -> parentActivity?.navigationController?.pushFragment(LightsInfoFragment.newInstance())
+            R.id.bt_users -> parentActivity?.navigationController?.pushFragment(UsersFragment.newInstance())
         }
     }
 

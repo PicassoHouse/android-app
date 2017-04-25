@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import br.com.picasso.picassohouse.R
 import android.content.Intent
+import android.support.design.widget.FloatingActionButton
 import android.widget.TextView
 import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.models.User
@@ -19,6 +20,7 @@ import br.com.picasso.picassohouse.ui.features.dashboard.DashboardFragment
 import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
 import br.com.picasso.picassohouse.ui.features.lights_info.LightsInfoFragment
 import br.com.picasso.picassohouse.ui.features.login.LoginActivity
+import br.com.picasso.picassohouse.ui.features.users.list.UsersFragment
 import br.com.picasso.picassohouse.utils.AuthHelper
 import br.com.picasso.picassohouse.utils.setupStatusBarLollilop
 import butterknife.BindView
@@ -35,7 +37,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     @BindView(R.id.drawer_layout) lateinit var drawerLayout: DrawerLayout
     @BindView(R.id.nav_view) lateinit var navigationView: NavigationView
 
-
+    @BindView(R.id.fab) lateinit var fab: FloatingActionButton
 
     lateinit var toggle: ActionBarDrawerToggle
 
@@ -122,6 +124,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.nav_dashboard -> navigationController.presentFragment(DashboardFragment.newInstance())
             R.id.nav_luzes -> navigationController.presentFragment(LightsFragment.newInstance())
             R.id.nav_spent_history -> navigationController.presentFragment(LightsInfoFragment.newInstance())
+            R.id.nav_users -> navigationController.presentFragment(UsersFragment.newInstance())
             R.id.nav_logout -> logout()
             else -> {
             }

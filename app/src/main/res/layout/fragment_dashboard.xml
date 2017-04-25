@@ -113,6 +113,7 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
+            android:id="@+id/bt_users"
             style="@style/DashboardCardStyle"
             card_view:cardCornerRadius="4dp">
 

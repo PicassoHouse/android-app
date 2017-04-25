@@ -1,6 +1,5 @@
-package br.com.picasso.picassohouse.ui.features.lights
+package br.com.picasso.picassohouse.ui.features.dashboard
 
-import br.com.picasso.picassohouse.models.Room
 import br.com.picasso.picassohouse.ui.base.BasePresenter
 import br.com.picasso.picassohouse.ui.base.BaseView
 

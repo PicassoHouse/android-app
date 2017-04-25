@@ -43,4 +43,5 @@
     <string name="destrancar_casa">Destrancar casa</string>
     <string name="confirm_lock_house">Deseja trancar sua casa?</string>
     <string name="lock">Trancar</string>
+    <string name="users">Usuários</string>
 </resources>

@@ -20,6 +20,7 @@ interface PicassoHouseAPI {
 
 
     @GET("users/current") fun getUserLogged(): Observable<User>
+    @GET("users") fun getUsers(): Observable<List<User>>
 
     @GET("rooms") fun getRooms(): Observable<List<Room>>
 

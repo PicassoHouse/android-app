@@ -1,4 +1,4 @@
-package br.com.picasso.picassohouse.ui.features.lights
+package br.com.picasso.picassohouse.ui.features.dashboard
 
 import br.com.picasso.picassohouse.networking.PicassoHouseAPI
 import rx.android.schedulers.AndroidSchedulers
@@ -34,7 +34,7 @@ class DashboardPresenter(val apiService : PicassoHouseAPI) : DashboardContract.P
     }
 
     // --------------------------------------------------------
-    // DashboardContract.Presenter methods
+    // UserDetailContract.Presenter methods
     // --------------------------------------------------------
 
     override fun setHomeIsLocked(isLocked: Boolean) {
