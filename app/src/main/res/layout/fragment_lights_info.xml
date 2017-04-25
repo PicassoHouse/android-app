@@ -60,17 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Informações do mês"
+                    android:text="Informações do mês atual"
                     android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:textAppearance="@android:style/TextAppearance.Small"
-                    android:textColor="@android:color/darker_gray"
-                    android:text="abril de 2017"/>
 
             </LinearLayout>
 
@@ -87,6 +78,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_hours_on"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="46sp"
@@ -107,6 +99,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_hours_off"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="46sp"

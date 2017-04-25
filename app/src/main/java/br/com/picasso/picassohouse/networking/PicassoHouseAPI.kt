@@ -2,9 +2,7 @@ package br.com.picasso.picassohouse.networking
 
 import android.content.Context
 import br.com.picasso.picassohouse.R
-import br.com.picasso.picassohouse.models.House
-import br.com.picasso.picassohouse.models.Room
-import br.com.picasso.picassohouse.models.User
+import br.com.picasso.picassohouse.models.*
 import br.com.picasso.picassohouse.utils.AuthHelper
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -28,6 +26,9 @@ interface PicassoHouseAPI {
     @GET("house") fun getHouseInfo(): Observable<House>
     @POST("house/lock") fun setHomeLocked(@Query("lock") isLocked: Boolean): Observable<Void>
     @POST("house/garage") fun setGarageOpened(@Query("open") isOpened: Boolean): Observable<Void>
+
+    @GET("reports/currentmonthlightinfo") fun getCurrentMonthLightInfo(): Observable<CurrentMonthLightInfo>
+    @GET("reports/monthlighthistory") fun getLightHistory(): Observable<List<LightHistoryItem>>
 
 
     // --------------------------------------------------------
