@@ -21,6 +21,8 @@ interface PicassoHouseAPI {
 
     @GET("users/current") fun getUserLogged(): Observable<User>
     @GET("users") fun getUsers(): Observable<List<User>>
+    @POST("users") fun addUser(@Body user: User): Observable<Void>
+    @DELETE("users/{userId}") fun removeUser(@Path("userId") userId: String): Observable<Void>
 
     @GET("rooms") fun getRooms(): Observable<List<Room>>
 

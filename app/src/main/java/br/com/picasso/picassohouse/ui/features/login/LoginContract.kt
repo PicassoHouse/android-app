@@ -9,6 +9,7 @@ interface LoginContract {
     interface View : BaseView {
         fun showMainUi()
         fun showLoader(flag: Boolean)
+        fun showDialog(title: String, message: String)
     }
 
     interface Presenter : BasePresenter<View> {

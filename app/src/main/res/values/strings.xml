@@ -44,4 +44,6 @@
     <string name="confirm_lock_house">Deseja trancar sua casa?</string>
     <string name="lock">Trancar</string>
     <string name="users">Usuários</string>
+    <string name="edit_user">Detalhes</string>
+    <string name="add_user">Novo usuário</string>
 </resources>

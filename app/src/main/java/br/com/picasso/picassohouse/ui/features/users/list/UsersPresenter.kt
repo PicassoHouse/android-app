@@ -13,10 +13,12 @@ class UsersPresenter(val apiService : PicassoHouseAPI) : UsersContract.Presenter
     var users : List<User> = emptyList()
 
     override fun start() {
+        view?.showLoader(true)
         apiService.getUsers()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+                    view?.showLoader(false)
                     users = it
                     view?.showUsers(users)
                 }, ::print)
@@ -34,5 +36,21 @@ class UsersPresenter(val apiService : PicassoHouseAPI) : UsersContract.Presenter
     // DashboardContract.Presenter methods
     // --------------------------------------------------------
 
+    override fun selectItem(position: Int) {
+        view?.showUserDetail(users[position])
+    }
+
+    override fun removerItem(position: Int) {
+        view?.showLoader(true)
+        val user = users[position]
+        apiService.removeUser(user._id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    view?.showLoader(false)
+                    users = users.minus(user)
+                    view?.showUsers(users)
+                }, ::print)
+    }
 
 }

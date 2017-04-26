@@ -1,12 +1,14 @@
 package br.com.picasso.picassohouse.ui.features.users.list
 
+import android.app.AlertDialog
+import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ListView
-import android.widget.Toast
 import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.R
 import br.com.picasso.picassohouse.models.User
@@ -15,6 +17,7 @@ import br.com.picasso.picassohouse.ui.features.users.detail.UserDetailFragment
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnItemClick
+import butterknife.OnItemLongClick
 
 
 class UsersFragment :  Fragment(), UsersContract.View {
@@ -43,6 +46,8 @@ class UsersFragment :  Fragment(), UsersContract.View {
     // Views
     // --------------------------------------------------------
     @BindView(R.id.lv_users) lateinit var lvUsers : ListView
+
+    private var progressDialog: ProgressDialog? = null
 
     // --------------------------------------------------------
     // Lifecycler
@@ -89,7 +94,30 @@ class UsersFragment :  Fragment(), UsersContract.View {
 
     @OnItemClick(R.id.lv_users)
     fun onClickUser(position: Int){
-        Toast.makeText(parentActivity, "Click $position", Toast.LENGTH_LONG).show()
+        presenter.selectItem(position)
+    }
+
+    @OnItemLongClick(R.id.lv_users)
+    fun onLongClickUser(position: Int) : Boolean {
+        AlertDialog.Builder(parentActivity)
+                .setTitle("Opções")
+                .setItems(arrayOf("Ver Detalhes", "Remover"), { dialog, which ->
+                    when (which) {
+                        0 -> presenter.selectItem(position)
+                        1 -> confirmDeleteItem(position)
+                        else -> presenter.selectItem(position)
+                    }
+                }).show()
+        return true
+    }
+
+    private fun confirmDeleteItem(position: Int) {
+        AlertDialog.Builder(parentActivity)
+                .setTitle("Atenção")
+                .setMessage("Deseja remover usuário?")
+                .setPositiveButton(android.R.string.ok, { dialog, which -> presenter.removerItem(position) })
+                .setNegativeButton(android.R.string.cancel, { dialog, which ->  dialog.dismiss() })
+                .show()
     }
 
     // --------------------------------------------------------
@@ -100,4 +128,16 @@ class UsersFragment :  Fragment(), UsersContract.View {
         usersAdapter.setItems(users)
     }
 
+    override fun showUserDetail(user : User) {
+        parentActivity?.navigationController?.pushFragment(UserDetailFragment.newInstance(user))
+    }
+
+    override fun showLoader(flag: Boolean) {
+        if (flag) {
+            progressDialog = ProgressDialog.show(parentActivity, "", "Aguarde...", true, false)
+        }
+        else if (progressDialog != null) {
+            progressDialog?.dismiss()
+        }
+    }
 }

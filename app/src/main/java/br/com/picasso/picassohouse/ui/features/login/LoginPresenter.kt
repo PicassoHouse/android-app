@@ -32,10 +32,16 @@ class LoginPresenter(val context: Context, val apiService : PicassoHouseAPI) : L
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ token ->
-                    AuthHelper.setAccessToken(context, token)
                     view?.showLoader(false)
-                    view?.showMainUi()
-                }, ::print)
+                    if (token.isNotEmpty()){
+                        AuthHelper.setAccessToken(context, token)
+                        view?.showMainUi()
+                    }else {
+                        view?.showDialog("Atenção", "Usuário ou senha inválidos!")
+                    }
+                }, {
+                    print(it)
+                })
 
     }
 

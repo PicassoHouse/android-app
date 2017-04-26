@@ -5,11 +5,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#212121"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Cadastrar Usuario"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:text="Usuário"/>
+
+                <EditText
+                    android:id="@+id/ed_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:hint="Usuário"
+                    android:textColor="@android:color/darker_gray"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="bold"
+                    android:text="Nome"/>
+
+                <EditText
+                    android:id="@+id/ed_display_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"
+                    android:hint="Nome"
+                    android:maxLines="1"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/tv_label_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:text="Senha"/>
+
+                <EditText
+                    android:id="@+id/ed_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Senha"
+                    android:inputType="textPassword"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textColor="@android:color/darker_gray"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:text="Tipo de Usuário"/>
+                <RadioGroup
+                    android:id="@+id/rd_user_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/radio_admin"
+                        android:layout_width="wrap_content"
+                        android:textColor="@android:color/darker_gray"
+                        android:layout_height="wrap_content"
+                        android:text="Administrador"/>
+                    <RadioButton
+                        android:id="@+id/radio_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/darker_gray"
+                        android:text="Usuário"/>
+                    <RadioButton
+                        android:id="@+id/radio_guest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/darker_gray"
+                        android:text="Convidado"/>
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:text="Código de Acesso"/>
+
+                <EditText
+                    android:id="@+id/ed_auth_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:hint="Código de Acesso"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+                <Button
+                    android:id="@+id/bt_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp"
+                    android:text="Salvar"/>
+
+            </LinearLayout>
+
+        </ScrollView>
 
 </LinearLayout>

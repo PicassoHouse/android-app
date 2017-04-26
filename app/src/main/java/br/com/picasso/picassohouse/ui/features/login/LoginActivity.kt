@@ -1,7 +1,9 @@
 package br.com.picasso.picassohouse.ui.features.login
 
+import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.app.ProgressDialog
+import android.content.DialogInterface
 
 import android.os.Bundle
 import android.view.View
@@ -47,12 +49,9 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
     // --------------------------------------------------------
     @OnClick(R.id.bt_login)
     fun onClickBtLogin(view : View) {
-        //TODO: autenticar usuario
-
         val username = edUsername.text.toString()
         val password = edPassword.text.toString()
 
-        //TODO: validar formulario
         presenter.authenticate(username, password)
     }
 
@@ -74,5 +73,13 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
         }
     }
 
+    override fun showDialog(title: String, message: String) {
+        AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(android.R.string.ok,  { dialog, which ->
+                    dialog.dismiss()
+                }).show()
+    }
 }
 
