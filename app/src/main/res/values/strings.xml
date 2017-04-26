@@ -46,4 +46,5 @@
     <string name="users">Usuários</string>
     <string name="edit_user">Detalhes</string>
     <string name="add_user">Novo usuário</string>
+    <string name="access_history">Histórico de Acessos</string>
 </resources>

@@ -15,6 +15,7 @@ import android.support.design.widget.FloatingActionButton
 import android.widget.TextView
 import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.models.User
+import br.com.picasso.picassohouse.ui.features.access_history.AccessHistoryFragment
 import butterknife.ButterKnife
 import br.com.picasso.picassohouse.ui.features.dashboard.DashboardFragment
 import br.com.picasso.picassohouse.ui.features.lights.LightsFragment
@@ -125,6 +126,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             R.id.nav_luzes -> navigationController.presentFragment(LightsFragment.newInstance())
             R.id.nav_spent_history -> navigationController.presentFragment(LightsInfoFragment.newInstance())
             R.id.nav_users -> navigationController.presentFragment(UsersFragment.newInstance())
+            R.id.nav_access_history -> navigationController.presentFragment(AccessHistoryFragment.newInstance())
             R.id.nav_logout -> logout()
             else -> {
             }

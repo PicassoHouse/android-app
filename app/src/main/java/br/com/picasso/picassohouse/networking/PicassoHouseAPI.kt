@@ -33,7 +33,7 @@ interface PicassoHouseAPI {
 
     @GET("reports/currentmonthlightinfo") fun getCurrentMonthLightInfo(): Observable<CurrentMonthLightInfo>
     @GET("reports/monthlighthistory") fun getLightHistory(): Observable<List<LightHistoryItem>>
-
+    @GET("reports/accesshistory") fun getAccessHistory(): Observable<List<AccessHistory>>
 
     // --------------------------------------------------------
     // API Factory
