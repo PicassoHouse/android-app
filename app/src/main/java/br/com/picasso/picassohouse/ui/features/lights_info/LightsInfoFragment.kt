@@ -5,25 +5,13 @@ import android.support.v4.app.Fragment
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
+import android.widget.ListView
 import br.com.picasso.picassohouse.PHApplication
 import br.com.picasso.picassohouse.R
-import br.com.picasso.picassohouse.models.CurrentMonthLightInfo
-import br.com.picasso.picassohouse.models.LightHistoryItem
+import br.com.picasso.picassohouse.models.LightHistory
 import br.com.picasso.picassohouse.ui.features.MainActivity
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.components.YAxis.AxisDependency
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
 
 class LightsInfoFragment:  Fragment() , LightsInfoContract.View {
@@ -48,13 +36,12 @@ class LightsInfoFragment:  Fragment() , LightsInfoContract.View {
     // Properties
     // --------------------------------------------------------
     lateinit var presenter : LightsInfoPresenter
+    private lateinit var historyAdapter: LightsHistoryAdapter
+
     // --------------------------------------------------------
     // Views
     // --------------------------------------------------------
-    @BindView(R.id.chart) lateinit var chartView: BarChart
-    @BindView(R.id.tv_hours_on) lateinit var tvHoursOn: TextView
-    @BindView(R.id.tv_hours_off) lateinit var tvHoursOff: TextView
-
+    @BindView(R.id.lv_access_history) lateinit var lvAccessHistory: ListView
 
     // --------------------------------------------------------
     // Lifecycler
@@ -80,50 +67,17 @@ class LightsInfoFragment:  Fragment() , LightsInfoContract.View {
     }
 
     private fun setup() {
-
         parentActivity?.setActionBarTitle(R.string.lights_info)
 
-        //setup chartView
-        chartView.setFitBars(true)
-        chartView.isScaleYEnabled = false
-        chartView.isScaleXEnabled = false
-        chartView.axisLeft.setDrawLabels(true)
-        chartView.axisLeft.setDrawAxisLine(false)
-        chartView.axisLeft.setDrawGridLines(true)
-        chartView.axisLeft.setDrawZeroLine(true)
-        chartView.axisRight.isEnabled = false
-        chartView.xAxis.setDrawGridLines(false)
-        chartView.xAxis.setDrawAxisLine(false)
-        chartView.xAxis.setDrawLimitLinesBehindData(true)
-        chartView.xAxis.granularity = 1f
-        chartView.xAxis.setDrawLabels(true)
-        chartView.xAxis.position = XAxis.XAxisPosition.BOTTOM
-        chartView.legend.isEnabled = false
+        historyAdapter = LightsHistoryAdapter(context)
+        lvAccessHistory.adapter = historyAdapter
     }
 
     // --------------------------------------------------------
     // LightsContract.View methods
     // --------------------------------------------------------
-    override fun showCurrentMonthInfo(info: CurrentMonthLightInfo) {
-        tvHoursOff.text = "${info.hoursOff}hr"
-        tvHoursOn.text = "${info.hoursOn}hr"
-    }
 
-    override fun showChart(history: List<LightHistoryItem>) : Unit {
-
-        val dataSets = history.mapIndexed { index, lightHistoryItem ->
-            val label = lightHistoryItem.label.substring(0, 3)
-
-            val dataSet = BarDataSet(arrayListOf(BarEntry(index.toFloat(), lightHistoryItem.value.toFloat())), label)
-            dataSet.color = context.resources.getColor(R.color.colorAccent)
-            dataSet.label = label
-
-            return@mapIndexed dataSet
-        }
-
-        //IBarDataSet
-        chartView.data = BarData(dataSets)
-        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(history.map { it.label.substring(0,3) })
-        chartView.invalidate()
+    override fun showAccessHistory(history: List<LightHistory>) {
+        historyAdapter.setItems(history)
     }
 }

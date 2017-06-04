@@ -42,7 +42,7 @@ class LightsPresenter(val apiService : PicassoHouseAPI) : LightsContract.Present
     override fun lightDidChangeStatus(position: Int, toStatus: Boolean) {
         rooms[position].isLightOn = toStatus
 
-        apiService.turnLightOn(toStatus, rooms[position].id)
+        apiService.turnLightOn(toStatus, rooms[position].room_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()

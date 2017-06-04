@@ -1,5 +1,6 @@
 package br.com.picasso.picassohouse.ui.features.dashboard
 
+import android.util.Log
 import br.com.picasso.picassohouse.networking.PicassoHouseAPI
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -21,7 +22,7 @@ class DashboardPresenter(val apiService : PicassoHouseAPI) : DashboardContract.P
                         view?.showButtonUnlockHouse()
                     else
                         view?.showButtonLockHouse()
-                }, ::print)
+                }, ::print )
 
     }
 
@@ -52,7 +53,7 @@ class DashboardPresenter(val apiService : PicassoHouseAPI) : DashboardContract.P
                 }, ::print)
     }
 
-    override fun  setGarageClosed(isClosed: Boolean) {
+    override fun setGarageClosed(isClosed: Boolean) {
         apiService.setGarageOpened(!isClosed)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

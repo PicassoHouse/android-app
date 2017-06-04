@@ -33,8 +33,8 @@
     </string>
     <string name="entrar">Entrar</string>
     <string name="picasso_house">Picasso House</string>
-    <string name="API_URL">http://104.236.79.15:8080/api/</string>
-    <!--<string name="API_URL">http://192.168.0.44:3000/api/</string>-->
+    <!--<string name="API_URL">http://104.236.79.15:8080/api/</string>-->
+    <string name="API_URL">http://192.168.0.20:3000/api/</string>
     <string name="lights">Luzes</string>
     <string name="lights_info">Histórico de Consumo</string>
     <string name="confirm_unlock_house">Deseja destrancar sua casa?</string>
